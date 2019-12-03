@@ -19,7 +19,16 @@
 
 static char MATILDA_TAG[] = { "Matilda:" };
 
+
+/*!
+ * MATILDA MOTION SENSOR
+ *
+ * 1. ACCELERATION
+ * 2. GYRO
+ */
 void matidaMotionTask(void *arg) {
+
+
 
 	try {
 		BMI160App *MotionSensor = new BMI160App(0x69, GYRO_250, ACC_2G);
@@ -87,7 +96,7 @@ void matidaMotionTask(void *arg) {
 				ESP_LOGI(MATILDA_TAG,
 						"{mqttTest} Mqtt Connection lost, reconnecting !!!");
 			}
-			vTaskDelay(1000);
+			vTaskDelay(1000);  //100 ticks=1secs
 		}
 	} catch (exception &err) {
 		ESP_LOGW(MATILDA_TAG, "{matidaTask}, Exception: %s", err.what());
@@ -100,7 +109,26 @@ void matidaMotionTask(void *arg) {
 
 }
 
+
+/*!
+ * MATILDA ENVIRONMENT SENSOR
+ *
+ * 1. TEMPERATURE
+ * 2. HUMIDITY
+ * 3. PRESSUE
+ * 4. ALTITUDE
+ *
+ */
 void matidaENVsensorTask(void *arg) {
+
+	TickType_t xLastWakeTime;
+		const TickType_t xDelay1min = pdMS_TO_TICKS( 60000 );
+
+		/* The xLastWakeTime variable needs to be initialized with the current tick
+		count. Note that this is the only time the variable is explicitly written to.
+		After this xLastWakeTime is managed automatically by the vTaskDelayUntil()
+		API function. */
+		xLastWakeTime = xTaskGetTickCount();
 
 	try {
 
@@ -172,7 +200,7 @@ void matidaENVsensorTask(void *arg) {
 				ESP_LOGI(MATILDA_TAG,
 						"{mqttTest} Mqtt Connection lost, reconnecting !!!");
 			}
-			vTaskDelay(1000);
+			vTaskDelayUntil( &xLastWakeTime, xDelay1min );
 		}
 	} catch (exception &err) {
 		ESP_LOGW(MATILDA_TAG, "{matidaTask}, Exception: %s", err.what());

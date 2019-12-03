@@ -46,8 +46,10 @@ void app_main(void) {
 	//xTaskCreate(bmeTask,"testbme280Task",10000,NULL,1,NULL);
 	//xTaskCreate(I2CScannerTask,"i2cScannerTask",10000,NULL,1,NULL);
 	//xTaskCreate(testTask,"testbmi160Task",10000,NULL,1,NULL);
+
 	xTaskCreate(matidaMotionTask, "matildaMotionTestTask", 20000, NULL, 1, NULL);
-	xTaskCreate(matidaENVsensorTask, "matildaEnvironmentSensorTestTask", 20000, NULL, 1, NULL);
+	//xTaskCreate(matidaMotionTask, "matildaMotionTestTask", 20000, NULL, 1, NULL);
+	//xTaskCreate(matidaENVsensorTask, "matildaEnvironmentSensorTestTask", 20000, NULL, 1, NULL);
 
 }
 }
