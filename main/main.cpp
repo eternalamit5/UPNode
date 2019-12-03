@@ -10,47 +10,44 @@
 #include "../components/BMI160/Test/BMI160Test.h"
 #include "../components/arduino-esp32/libraries/Wire/src/Wire.h"
 #include "../components/MatildaApp/matildaApp.h"
-extern "C"{
-	void app_main(void)
-	{
-		//Initialize NVS
-		esp_err_t ret = nvs_flash_init();
-		if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
-		  ESP_ERROR_CHECK(nvs_flash_erase());
-		  ret = nvs_flash_init();
-		}
-		ESP_ERROR_CHECK(ret);
-
-		/*
-		 * Initialize Arduino
-		 */
-		initArduino();
-
-
-		/*Initialize Serial UART communication
-			Tx: GPIO 1
-			Rx: GPIO 3
-			Baud rate: 115200
-		*/
-		Serial.begin(115200);
-
-
-
-		/*Initialize I2C communication
-			SDA: GPIO 23
-			SCL: GPIO 22
-			Clock: 400*1000 Hz
-		 */
-		Wire.begin(23,22,400*1000);
-
-		//Wire.begin();
-
-		//xTaskCreate(wifiTestTask,"testWIFITask",10000,NULL,1,NULL);
-		//xTaskCreate(mqttTest,"testMQTTTask",10000,NULL,1,NULL);
-		//xTaskCreate(bmeTask,"testbme280Task",10000,NULL,1,NULL);
-		//xTaskCreate(I2CScannerTask,"i2cScannerTask",10000,NULL,1,NULL);
-		//xTaskCreate(testTask,"testbmi160Task",10000,NULL,1,NULL);
-		xTaskCreate(matidaTask,"matildaTestTask",20000,NULL,1,NULL);
-
+extern "C" {
+void app_main(void) {
+	//Initialize NVS
+	esp_err_t ret = nvs_flash_init();
+	if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+		ESP_ERROR_CHECK(nvs_flash_erase());
+		ret = nvs_flash_init();
 	}
+	ESP_ERROR_CHECK(ret);
+
+	/*
+	 * Initialize Arduino
+	 */
+	initArduino();
+
+	/*Initialize Serial UART communication
+	 Tx: GPIO 1
+	 Rx: GPIO 3
+	 Baud rate: 115200
+	 */
+	Serial.begin(115200);
+
+	/*Initialize I2C communication
+	 SDA: GPIO 23
+	 SCL: GPIO 22
+	 Clock: 400*1000 Hz
+	 */
+	Wire.begin(23, 22, 400 * 1000);
+
+	//Wire.begin();
+
+	//xTaskCreate(wifiTestTask,"testWIFITask",10000,NULL,1,NULL);
+	//xTaskCreate(mqttTest,"testMQTTTask",10000,NULL,1,NULL);
+	//xTaskCreate(bmeTask,"testbme280Task",10000,NULL,1,NULL);
+	//xTaskCreate(I2CScannerTask,"i2cScannerTask",10000,NULL,1,NULL);
+	//xTaskCreate(testTask,"testbmi160Task",10000,NULL,1,NULL);
+	xTaskCreate(matidaMotionTask, "matildaMotionTestTask", 20000, NULL, 1, NULL);
+	xTaskCreate(matidaENVsensorTask, "matildaEnvironmentSensorTestTask", 20000, NULL, 1, NULL);
+
+}
 }
