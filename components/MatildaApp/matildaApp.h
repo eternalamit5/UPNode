@@ -8,7 +8,8 @@
 #ifndef COMPONENTS_MATILDAAPP_MATILDAAPP_H_
 #define COMPONENTS_MATILDAAPP_MATILDAAPP_H_
 
-void matidaMotionTask(void *arg);
-void matidaENVsensorTask(void *arg);
+void matidaTask(void *arg);
+//void matidaMotionTask(void *arg);
+//void matidaENVsensorTask(void *arg);
 
 #endif /* COMPONENTS_MATILDAAPP_MATILDAAPP_H_ */
