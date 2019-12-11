@@ -36,7 +36,7 @@ void matidaTask(void* arg){
 
 		while(wifi->getConnectionStatus()==WIFI_DISCONNECTED){
 			ESP_LOGI(MATILDA_TAG,"{mqttTest} Connecting to WIFI !!!");
-			vTaskDelay(1000);
+			vTaskDelay(100); //1 secs
 		}
 
 		//Start Mqtt
@@ -49,7 +49,7 @@ void matidaTask(void* arg){
 
 		while(mqttClient->getConnectionStatus()==MQTT_DISCONNECTED){
 			ESP_LOGI(MATILDA_TAG,"{mqttTest} Connecting to MQTT !!!");
-			vTaskDelay(1000);
+			vTaskDelay(100);
 		}
 
 		ESP_LOGI(MATILDA_TAG,"{mqttTest} Start Sensor loop !!!");
@@ -87,7 +87,7 @@ void matidaTask(void* arg){
 			}else{
 				ESP_LOGI(MATILDA_TAG,"{mqttTest} Mqtt Connection lost, reconnecting !!!");
 			}
-			vTaskDelay(1000);
+			vTaskDelay(100);
 		}
 	}
 	catch(exception& err){

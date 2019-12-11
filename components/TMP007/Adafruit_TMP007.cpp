@@ -19,11 +19,27 @@
 #include "../arduino-esp32/libraries/SPI/src/SPI.h"
 #include "../Adafruit_Common_Sensor/Adafruit_Sensor.h"
 
-//#define TESTDIE 0x0C78
-//#define TESTVOLT 0xFEED
+#define TESTDIE 0x0C78
+#define TESTVOLT 0xFEED
 
 Adafruit_TMP007::Adafruit_TMP007(uint8_t i2caddr) {
   _addr = i2caddr;
+}
+
+
+/*
+ * amit added
+*/
+bool Adafruit_TMP007::begin() {
+ bool status = false;
+ _i2caddr = TESTDIE;
+ _wire = &Wire;
+ status = init();
+ //if (!status) {
+  // _i2caddr = TESTVOLT;
+  // status = init();
+ //}
+ return status;
 }
 
 
@@ -80,7 +96,7 @@ int16_t Adafruit_TMP007::readRawDieTemperature(void) {
   raw = TESTDIE;
 #endif
 
-  Serial.print("Raw Tambient: 0x"); Serial.print (raw, HEX);
+  Serial.print("Raw ambient: 0x"); Serial.print (raw, HEX);
   
 
   float v = raw/4;
