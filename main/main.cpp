@@ -1,16 +1,18 @@
 #include "nvs_flash.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "../components/OPT3001/Test/OPT3001Test.h"
 #include "../components/LPG_WIFI/Test/wifiTest.h"
 #include "../components/LPG_MQTT/Test/mqttTest.h"
 #include "../components/BME280/Test/BME280Test.h"
 #include "../arduino-esp32/cores/esp32/Arduino.h"
 #include "../components/UtilityTools/i2cScanner.h"
-//#include "../components/BMI160/Test/BMI160Test.h"
+#include "../components/BMI160/Test/BMI160Test.h"
 #include "../components/BMI160/Test/BMI160Test.h"
 #include "../components/arduino-esp32/libraries/Wire/src/Wire.h"
 #include "../components/MatildaApp/matildaApp.h"
 #include "../components/TMP007/Test/TMP007Test.h"
+#include "../components/OPT3001/Test/OPT3001Test.h"
 extern "C" {
 void app_main(void) {
 	//Initialize NVS
@@ -38,7 +40,7 @@ void app_main(void) {
 	 SCL: GPIO 22
 	 Clock: 400*1000 Hz
 	 */
-	Wire.begin(23, 22, 400 * 1000);
+	Wire.begin(23,22,400*1000);
 
 	//Wire.begin();
 
@@ -52,7 +54,8 @@ void app_main(void) {
 
 	//xTaskCreate(matidaENVsensorTask, "matildaEnvironmentSensorTestTask", 20000, NULL, 1, NULL);
 	//xTaskCreate(matidaMotionTask, "matildaMotionTestTask", 20000, NULL, 1, NULL);
-	xTaskCreate(TMP007Task,"testTMP007Task",10000,NULL,1,NULL);
+	//xTaskCreate(TMP007Task,"testTMP007Task",10000,NULL,1,NULL);
+	xTaskCreate(OPT3001Task,"testOPT3001Task",10000,NULL,1,NULL);
 
 }
 }

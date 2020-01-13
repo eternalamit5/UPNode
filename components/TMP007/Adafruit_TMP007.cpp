@@ -29,7 +29,7 @@ Adafruit_TMP007::Adafruit_TMP007(uint8_t i2caddr) {
 
 /*
  * amit added
-*/
+
 bool Adafruit_TMP007::begin() {
  bool status = false;
  _i2caddr = TESTDIE;
@@ -41,7 +41,7 @@ bool Adafruit_TMP007::begin() {
  //}
  return status;
 }
-
+*/
 
 boolean Adafruit_TMP007::begin(uint16_t samplerate) {
   Wire.begin();

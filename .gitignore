@@ -31,9 +31,8 @@
 *.out
 *.app
 
-/build/
+
+UPNode/build/UPNode.bin
 /sdkconfig
-/sdkconfig.old
-/.cproject
-/.settings/
-/.project
+UPNode/sdkconfig
+
