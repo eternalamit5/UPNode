@@ -55,7 +55,8 @@ void app_main(void) {
 	//xTaskCreate(matidaENVsensorTask, "matildaEnvironmentSensorTestTask", 20000, NULL, 1, NULL);
 	//xTaskCreate(matidaMotionTask, "matildaMotionTestTask", 20000, NULL, 1, NULL);
 	//xTaskCreate(TMP007Task,"testTMP007Task",10000,NULL,1,NULL);
-	xTaskCreate(OPT3001Task,"testOPT3001Task",10000,NULL,1,NULL);
+	//xTaskCreate(OPT3001Task,"testOPT3001Task",10000,NULL,1,NULL);
+
 
 }
 }

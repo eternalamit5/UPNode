@@ -13,7 +13,7 @@
 
 using namespace std;
 
-#define OPT3001_ADDRESS 0x45
+#define OPT3001_ADDRESS 0x45  //48
 #define HEX 16
 ClosedCube_OPT3001 opt3001;
 
