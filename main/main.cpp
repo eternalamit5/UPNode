@@ -13,6 +13,7 @@
 #include "../components/MatildaApp/matildaApp.h"
 #include "../components/TMP007/Test/TMP007Test.h"
 #include "../components/OPT3001/Test/OPT3001Test.h"
+#include "../components/servo/servoApp.h"
 extern "C" {
 void app_main(void) {
 	//Initialize NVS
@@ -57,6 +58,7 @@ void app_main(void) {
 	//xTaskCreate(TMP007Task,"testTMP007Task",10000,NULL,1,NULL);
 	//xTaskCreate(OPT3001Task,"testOPT3001Task",10000,NULL,1,NULL);
 
+	xTaskCreate(ServoMotorTask,"testServoTask",10000,NULL,1,NULL);
 
 }
 }

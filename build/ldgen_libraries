@@ -65,6 +65,7 @@
  /home/biba/BIBA/esp/LowerPowerIoTNode/UPNode/build/pthread/libpthread.a
  /home/biba/BIBA/esp/LowerPowerIoTNode/UPNode/build/sdmmc/libsdmmc.a
  /home/biba/BIBA/esp/LowerPowerIoTNode/UPNode/build/senml_esp32/libsenml_esp32.a
+ /home/biba/BIBA/esp/LowerPowerIoTNode/UPNode/build/servo/libservo.a
  /home/biba/BIBA/esp/LowerPowerIoTNode/UPNode/build/smartconfig_ack/libsmartconfig_ack.a
  /home/biba/BIBA/esp/LowerPowerIoTNode/UPNode/build/soc/libsoc.a
  /home/biba/BIBA/esp/LowerPowerIoTNode/UPNode/build/spi_flash/libspi_flash.a

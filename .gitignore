@@ -30,9 +30,10 @@
 *.exe
 *.out
 *.app
+*.bin
 
+/UPNode/build/
+/sdkconfig/
+/UPNode/sdkconfig/
 
-UPNode/build/UPNode.bin
-/sdkconfig
-UPNode/sdkconfig
 
